@@ -3,7 +3,7 @@
 #include "LiquidCrystal_I2C.h"
 #define I2C_ADDR    0x27 // <<----- Add your address here.  Find it from I2C Scanner
 #define BACKLIGHT_PIN     3
-#define En_pin  2g
+#define En_pin  2
 #define Rw_pin  1
 #define Rs_pin  0
 #define D4_pin  4
@@ -26,10 +26,6 @@ void setup()
   Serial.begin(9600);
   lcd.begin(16, 2);// set up the LCD's number of columns and rows:
 
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
-  pinMode(bluePin, OUTPUT);
-  pinMode(solonoidPin, OUTPUT);
 
 }
 
@@ -53,7 +49,6 @@ void loop()
     Serial.println("Water On");
     digitalWrite(9, HIGH);//if water level is below desired percentage, send power to solenoid
     lcd.print("Water On    ");
-    setColor(0, 255, 0);
     digitalWrite(11, LOW);
   }
   else
@@ -63,7 +58,6 @@ void loop()
     Serial.println("Water Off");
     digitalWrite(9, LOW);//if water level is at desired percentage, shut off power to the solenoid
     lcd.print("Water Off");
-    setColor(0, 0, 255);
      digitalWrite(11, HIGH);
   }
 }
