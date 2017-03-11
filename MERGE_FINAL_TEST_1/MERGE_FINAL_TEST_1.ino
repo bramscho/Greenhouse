@@ -103,7 +103,7 @@ void loop() {
   if (soilSensorPercentage < 30) {
     lcd.setCursor(4, 0);
     Serial.println("Water On");
-    digithowalWrite(2, HIGH);//if water level is below desired percentage, send power to solenoid
+    digitalWrite(2, HIGH);//if water level is below desired percentage, send power to solenoid
     lcd.print("Water On    ");
     digitalWrite(2, LOW);
   }
